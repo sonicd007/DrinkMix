@@ -3,6 +3,8 @@ import { Counter } from "./components/Counter";
 import { FetchData } from "./components/FetchData";
 import { Catalog } from "./components/Catalog";
 import { WhatCanIMake } from './components/WhatCanIMake';
+import { Search } from './components/Search';
+import { DrinkDetail } from './components/DrinkDetail';
 
 const AppRoutes = [
     {
@@ -12,6 +14,14 @@ const AppRoutes = [
     {
         path: '/wcim',
         element: <WhatCanIMake />
+    },
+    {
+        path: '/search',
+        element: <Search />
+    },
+    {
+        path: '/wip',
+        element: <DrinkDetail />
     },
     {
         path: '/counter',
