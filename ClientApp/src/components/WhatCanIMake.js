@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
+import SummaryContainer from './SummaryContainer';
 export class WhatCanIMake extends Component {
     static displayName = WhatCanIMake.name;
 
@@ -8,12 +9,10 @@ export class WhatCanIMake extends Component {
             <div>
                 <Row>
                     <Col sm="12">
-                        <div className="page-summary-container">
-                            <div className="page-summary-container__summary-text">
-                                <h2>What can I make?</h2>
-                                <p>On this page, you can select the ingredients on hand to get a list of drinks you may be able to make.</p>
-                            </div>
-                        </div>
+                        <SummaryContainer
+                            title="What can I make?"
+                            description="On this page, you can select the ingredients on hand to get a list of drinks you may be able to make."
+                        />
                     </Col>
                     <Col sm="12">
                         <h3>Base liquors</h3>

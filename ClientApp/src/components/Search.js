@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
 import { Search as MagnifyingGlass } from 'react-bootstrap-icons';
+import SummaryContainer from './SummaryContainer';
 export class Search extends Component {
     static displayName = Search.name;
 
@@ -9,12 +10,10 @@ export class Search extends Component {
             <div>
                 <Row>
                     <Col sm="12">
-                        <div className="page-summary-container">
-                            <div className="page-summary-container__summary-text">
-                                <h2>Search</h2>
-                                <p>On this page, you can search for drink recipes by name, alcoholic/non-alcoholic, glass type, and other drink attributes.</p>
-                            </div>
-                        </div>
+                        <SummaryContainer
+                            title="Search"
+                            description="On this page, you can search for drink recipes by name, alcoholic/non-alcoholic, glass type, and other drink attributes."
+                        />
                     </Col>
                     <Col sm="12">
                         <div className="search-container">

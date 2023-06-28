@@ -22,3 +22,10 @@ code {
 body {
     font-family: Quicksand;
 }
+
+h2 {
+    font: normal normal bold 50px/63px Quicksand;
+}
+h3 {
+    font: normal normal bold 20px/25px Quicksand;
+}

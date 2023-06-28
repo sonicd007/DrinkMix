@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhiskeyGlass, faMortarPestle } from '@fortawesome/free-solid-svg-icons';
-
 import PH337x584 from '../resources/images/placeholders/337x584.svg';
+import SummaryContainer from './SummaryContainer';
 export class DrinkDetail extends Component {
     static displayName = DrinkDetail.name;
 
@@ -12,12 +12,10 @@ export class DrinkDetail extends Component {
             <div>
                 <Row>
                     <Col sm="12">
-                        <div className="page-summary-container">
-                            <div className="page-summary-container__summary-text">
-                                <h2>Drink Detail</h2>
-                                <h3>Old Fashion</h3>
-                            </div>
-                        </div>
+                        <SummaryContainer
+                            title="Drink Detail"
+                            description="Old Fashion"
+                        />
                     </Col>
                     <Col sm="12" md="6">
                         <div className="glass-visualizer-container d-none d-md-block">
