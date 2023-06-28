@@ -4,7 +4,7 @@ import styles from './SummaryContainer.module.css'
 const SummaryContainer = ({ title, description, imageUrl, altText }) => {
     return (
         <div className={styles['summary-container']} >
-            <div className="summary-container__summary-text">
+            <div className={styles["summary-container__summary-text"]}>
                 <h2>{title}</h2>
                 <p>{description}</p>
             </div>
