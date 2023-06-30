@@ -15,9 +15,16 @@ namespace DrinkMix
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+            var drinkMixConnectionString = builder.Configuration["DrinkMixDatabase:ConnectionString"] ?? throw new InvalidOperationException("Connection string 'DrinkMixDatabase' not found.");
+
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(connectionString));
+                options.UseMySql(drinkMixConnectionString,
+                ServerVersion.AutoDetect(drinkMixConnectionString)));
+
+            builder.Services.AddDbContext<DrinkMixDbContext>(options =>
+                options.UseMySql(drinkMixConnectionString,
+                ServerVersion.AutoDetect(drinkMixConnectionString)));
+
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
