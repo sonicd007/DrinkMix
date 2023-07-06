@@ -1,0 +1,22 @@
+﻿.drink-card-container {
+    box-shadow: 0px 0px 10px #00000029;
+    border-radius: 15px;
+    margin: 20px auto 20px auto;
+    padding: 20px;
+}
+
+.drink-card-container__drink-image img {
+    box-sizing: border-box;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+}
+
+.drink-card-container__ingredients-list {
+    list-style-position: inside;
+    padding-left: 0px;
+}
+
+.drink-card-container__ingredients-list ::marker {
+    color: #018ABE;
+}
