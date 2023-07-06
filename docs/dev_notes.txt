@@ -1,8 +1,0 @@
-// Steps for creating secrets and scaffolding db
-dotnet user-secrets init
-dotnet user-secrets set "DrinkMixDatabase:ConnectionString" "server=127.0.0.1;user=admin;password=foobar;database=DrinkMix"
-dotnet ef dbcontext scaffold "Name=DrinkMixDatabase:ConnectionString" "Pomelo.EntityFrameworkCore.MySql"
-dotnet ef migrations add InitialSchema --context DrinkMixDbContext -o .\Data\Migrations\
-dotnet ef migrations remove --context DrinkMixDbContext
-dotnet ef database update --context DrinkMixDbContext
-dotnet ef database update --context ApplicationDbContext
