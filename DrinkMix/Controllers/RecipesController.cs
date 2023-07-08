@@ -93,19 +93,6 @@ namespace DrinkMix.Controllers
             return CreatedAtAction("GetRecipe", new { id = viewModel.Id }, viewModel);
         }
 
-        // DELETE: api/Recipes/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRecipe(int id)
-        {
-           
-            if (await _recipeService.DeleteRecipe(id))
-            {
-                return NoContent();
-            }
-
-            return BadRequest($"Recipe with {id} does not exist.");
-        }
-
         private bool RecipeExists(int id)
         {
             return _recipeService.GetRecipeById(id) != null;

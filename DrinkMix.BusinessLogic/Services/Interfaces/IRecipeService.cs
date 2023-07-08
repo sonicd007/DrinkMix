@@ -11,6 +11,11 @@ namespace DrinkMix.BusinessLogic.Services.Interfaces
         RecipeDTO? UpdateRecipe(RecipeDTO recipe);
         Task<bool> DeleteRecipe(int recipeId);
         GlassTypeDTO? GetGlassTypeById(int id);
+        GlassTypeDTO? CreateGlassType(GlassTypeDTO glassType);
+        GlassTypeDTO? UpdateGlassType(GlassTypeDTO glassType);
+        Task<bool> DeleteGlassType(int glassTypeId);
         IngredientDTO? GetIngredientById(int id);
+        IngredientDTO? CreateIngredient(IngredientDTO ingredient);
+        IngredientDTO? UpdateIngredient(IngredientDTO ingredient);
     }
 }

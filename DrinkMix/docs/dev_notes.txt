@@ -6,3 +6,10 @@ dotnet ef migrations add InitialSchema --context DrinkMixDbContext -o .\Data\Mig
 dotnet ef migrations remove --context DrinkMixDbContext
 dotnet ef database update --context DrinkMixDbContext
 dotnet ef database update --context ApplicationDbContext
+
+
+Seeing this error when trying to migrate the data access project?
+Unable to create an object of type 'ApplicationDbContext'. For the different patterns supported at design time, see https://go.microsoft.com/fwlink/?linkid=851728
+
+Try this: dotnet ef database update --project ../DrinkMix.DataAccess --context ApplicationDbContext -v --startup-project ../DrinkMix
+where the working directory is DrinkMix.DataAccess

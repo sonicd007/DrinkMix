@@ -45,7 +45,7 @@ namespace DrinkMix.Services
 
         public RecipeDTO? UpdateRecipe(RecipeDTO recipe)
         {
-            Recipe updatedRecipe= _mapper.Map<Recipe>(recipe);
+            Recipe updatedRecipe = _mapper.Map<Recipe>(recipe);
             // Retrieve the existing recipe from the service
             RecipeDTO? existingRecipe = this.GetRecipeById(recipe.Id);
             if (null == existingRecipe)
@@ -141,7 +141,7 @@ namespace DrinkMix.Services
 
             if (null != ingredient)
             {
-                ingredientDto= _mapper.Map<IngredientDTO>(ingredient);
+                ingredientDto = _mapper.Map<IngredientDTO>(ingredient);
             }
 
             return ingredientDto;
@@ -162,6 +162,89 @@ namespace DrinkMix.Services
 
             return foundRecipes;
         }
+
+        public GlassTypeDTO? CreateGlassType(GlassTypeDTO glassTypeDto)
+        {
+            var glassType = _mapper.Map<GlassType>(glassTypeDto);
+
+            _dbContext.GlassTypes.Add(glassType);
+            var createdGlassTypeDto = _mapper.Map<GlassTypeDTO>(glassType);
+
+            return createdGlassTypeDto;
+        }
+
+        public GlassTypeDTO? UpdateGlassType(GlassTypeDTO glassType)
+        {
+            var existingGlassType = _dbContext.GlassTypes.Find(glassType.Id);
+            if (existingGlassType == null)
+            {
+                return null;
+            }
+
+            // Update the properties of the existing glass type
+            existingGlassType.Name = glassType.Name;
+
+            // Save the changes to the database
+            _dbContext.SaveChanges();
+
+            // Map the updated glass type to DTO and return it
+            return new GlassTypeDTO
+            {
+                Id = existingGlassType.Id,
+                Name = existingGlassType.Name
+            };
+        }
+
+        public async Task<bool> DeleteGlassType(int glassTypeId)
+        {
+            var existingGlassType = await _dbContext.GlassTypes.FindAsync(glassTypeId);
+            if (existingGlassType == null)
+            {
+                return false;
+            }
+
+            // Remove the glass type from the DbSet
+            _dbContext.GlassTypes.Remove(existingGlassType);
+
+            // Save the changes to the database
+            await _dbContext.SaveChangesAsync();
+
+            return true;
+        }
+
+        public IngredientDTO? CreateIngredient(IngredientDTO ingredient)
+        {
+            var newIngredient = _mapper.Map<Ingredient>(ingredient);
+
+            // Add the new ingredient to the DbSet
+            _dbContext.Ingredients.Add(newIngredient);
+
+            // Save the changes to the database
+            _dbContext.SaveChanges();
+
+            // Map the new ingredient to DTO and return it
+            return _mapper.Map<IngredientDTO>(newIngredient);
+        }
+
+        public IngredientDTO? UpdateIngredient(IngredientDTO ingredient)
+        {
+            var existingIngredient = _dbContext.Ingredients.Find(ingredient.Id);
+            if (existingIngredient == null)
+            {
+                return null;
+            }
+
+            // Update the properties of the existing ingredient
+            existingIngredient.Name = ingredient.Name;
+
+            // Save the changes to the database
+            _dbContext.SaveChanges();
+
+            // Map the updated ingredient to DTO and return it
+            return _mapper.Map<IngredientDTO>(existingIngredient);
+        }
     }
 
 }
+
+
