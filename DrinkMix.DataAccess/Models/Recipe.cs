@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DrinkMix.Models;
 
-public partial class Recipe
+public partial class Recipe : BaseDomainModel
 {
     public int Id { get; set; }
 

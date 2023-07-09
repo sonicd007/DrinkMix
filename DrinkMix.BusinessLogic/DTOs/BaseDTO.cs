@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace DrinkMix.BusinessLogic.DTOs
 {
-    public class GlassTypeDTO : BaseDTO
+    public class BaseDTO
     {
-
-        public string Name { get; set; } = null!;
+        public int Id { get; set; }
     }
 }

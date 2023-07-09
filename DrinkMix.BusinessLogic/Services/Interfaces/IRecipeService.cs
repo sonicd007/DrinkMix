@@ -17,5 +17,10 @@ namespace DrinkMix.BusinessLogic.Services.Interfaces
         IngredientDTO? GetIngredientById(int id);
         IngredientDTO? CreateIngredient(IngredientDTO ingredient);
         IngredientDTO? UpdateIngredient(IngredientDTO ingredient);
+        IngredientTypeDTO? GetIngredientTypeById(int id);
+        IngredientTypeDTO? CreateIngredientType(IngredientTypeDTO ingredientTypeDto);
+        IngredientTypeDTO? UpdateIngredientType(IngredientTypeDTO ingredientTypeDto);
+        Task<bool> DeleteIngredientType(int id);
+        Task<bool> DeleteIngredient(int id);
     }
 }

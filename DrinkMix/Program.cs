@@ -71,6 +71,9 @@ namespace DrinkMix
             });
 
             var app = builder.Build();
+            // Validate automapper profiles
+            var mapper = app.Services.GetRequiredService<IMapper>();
+            mapper.ConfigurationProvider.AssertConfigurationIsValid();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

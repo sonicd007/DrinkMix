@@ -243,6 +243,31 @@ namespace DrinkMix.Services
             // Map the updated ingredient to DTO and return it
             return _mapper.Map<IngredientDTO>(existingIngredient);
         }
+
+        public IngredientTypeDTO? GetIngredientTypeById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IngredientTypeDTO? CreateIngredientType(IngredientTypeDTO ingredientTypeDto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IngredientTypeDTO? UpdateIngredientType(IngredientTypeDTO ingredientTypeDto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> DeleteIngredientType(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> DeleteIngredient(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

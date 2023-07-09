@@ -1,6 +1,6 @@
 ﻿namespace DrinkMix.ViewModels
 {
-    public class GlassTypeViewModel
+    public class IngredientTypeViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; } = null!;

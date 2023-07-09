@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="DTOs\Interfaces\" />
     <Folder Include="Exceptions\" />
   </ItemGroup>
 
