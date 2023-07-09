@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
+using DrinkMix.BusinessLogic.AutoMapperMappings;
 
 namespace DrinkMix
 {
@@ -46,7 +48,12 @@ namespace DrinkMix
             builder.Services.AddRazorPages();
 
             // Configure Automapper
-            builder.Services.AddAutoMapper(typeof(Program).Assembly);
+            List<Assembly> assemblies = new List<Assembly>
+            {
+                Assembly.GetExecutingAssembly(),
+                typeof(DTOMappingProfile).Assembly
+            };
+            builder.Services.AddAutoMapper(assemblies);
 
             // Configure DI
             builder.Services.AddScoped<IRecipeService, RecipeService>();

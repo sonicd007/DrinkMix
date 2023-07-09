@@ -17,7 +17,10 @@ namespace DrinkMix.AutoMapperMappings
                 .ForMember(x => x.GlassType, opt => opt.MapFrom(y => y.GlassName))
                 .ForMember(x => x.RecipeIngredients, opt => opt.MapFrom(y => y.Ingredients));
 
-
+            CreateMap<GlassTypeDTO, GlassTypeViewModel>()
+                .ForMember(to => to.Id, opt => opt.MapFrom(from => from.Id))
+                .ForMember(to => to.Name, opt => opt.MapFrom(from => from.Name))
+                .ReverseMap();
         }
     }
 
