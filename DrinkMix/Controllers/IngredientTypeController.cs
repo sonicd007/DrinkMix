@@ -18,6 +18,22 @@ namespace DrinkMix.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
+        public async Task<ActionResult<ICollection<IngredientTypeViewModel>>> GetIngredientTypes(int page = 1, int pageSize = 10)
+        {
+            if (null == _recipeService)
+            {
+                return NotFound();
+            }
+
+            var recipes = await _recipeService.GetIngredientTypes(page, pageSize);
+
+            // Map the recipes to view models
+            ICollection<IngredientTypeViewModel> recipeViewModels = _mapper.Map<ICollection<IngredientTypeViewModel>>(recipes);
+
+            return Ok(recipeViewModels);
+        }
+
         [HttpGet("{id}")]
         public IActionResult GetIngredientTypeById(int id)
         {

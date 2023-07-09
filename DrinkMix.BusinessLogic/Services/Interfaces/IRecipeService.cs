@@ -22,5 +22,6 @@ namespace DrinkMix.BusinessLogic.Services.Interfaces
         IngredientTypeDTO? UpdateIngredientType(IngredientTypeDTO ingredientTypeDto);
         Task<bool> DeleteIngredientType(int id);
         Task<bool> DeleteIngredient(int id);
+        Task<ICollection<IngredientTypeDTO?>> GetIngredientTypes(int page, int pageSize);
     }
 }

@@ -246,7 +246,15 @@ namespace DrinkMix.Services
 
         public IngredientTypeDTO? GetIngredientTypeById(int id)
         {
-            throw new NotImplementedException();
+            IngredientTypeDTO? glassTypeDto = null;
+            IngredientType? ingredientType = _dbContext.IngredientTypes.Find(id);
+
+            if (null != ingredientType)
+            {
+                glassTypeDto = _mapper.Map<IngredientTypeDTO>(ingredientType);
+            }
+
+            return glassTypeDto;
         }
 
         public IngredientTypeDTO? CreateIngredientType(IngredientTypeDTO ingredientTypeDto)
@@ -267,6 +275,22 @@ namespace DrinkMix.Services
         public Task<bool> DeleteIngredient(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<ICollection<IngredientTypeDTO?>> GetIngredientTypes(int page, int pageSize)
+        {
+            // Calculate the number of items to skip based on the page and pageSize
+            int skipCount = (page - 1) * pageSize;
+
+            // Retrieve the recipes asynchronously with pagination
+            List<IngredientType> ingredientTypes = await _dbContext.IngredientTypes.AsQueryable()
+                .Skip(skipCount)
+                .Take(pageSize)
+                .ToListAsync();
+
+            var foundIngredientsTypes = _mapper.Map<ICollection<IngredientTypeDTO?>>(ingredientTypes);
+
+            return foundIngredientsTypes;
         }
     }
 
