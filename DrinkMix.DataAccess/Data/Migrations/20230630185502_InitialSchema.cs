@@ -65,7 +65,8 @@ namespace DrinkMix.Data.Migrations
                         name: "Recipe_FK",
                         column: x => x.GlassTypeId,
                         principalTable: "GlassType",
-                        principalColumn: "Id");
+                        principalColumn: "Id"
+                        );
                 })
                 .Annotation("MySql:CharSet", "utf8")
                 .Annotation("Relational:Collation", "utf8_general_ci");
@@ -74,7 +75,8 @@ namespace DrinkMix.Data.Migrations
                 name: "Ingredient",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int(11)", nullable: false),
+                    Id = table.Column<int>(type: "int(11)", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false, collation: "utf8_general_ci")
                         .Annotation("MySql:CharSet", "utf8"),
                     IngredientTypeId = table.Column<int>(type: "int(11)", nullable: false)
@@ -109,7 +111,8 @@ namespace DrinkMix.Data.Migrations
                         name: "RecipeIngredients_FK",
                         column: x => x.RecipeId,
                         principalTable: "Recipe",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "RecipeIngredients_FK_1",
                         column: x => x.IngredientId,

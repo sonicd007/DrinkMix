@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DrinkMix.BusinessLogic.DTOs;
+using DrinkMix.RequestObjects;
 using DrinkMix.ViewModels;
 
 namespace DrinkMix.AutoMapperMappings
@@ -33,6 +34,20 @@ namespace DrinkMix.AutoMapperMappings
                 .ForMember(to => to.Id, opt => opt.MapFrom(from => from.Id))
                 .ForMember(to => to.Name, opt => opt.MapFrom(from => from.Name));
 
+            CreateMap<IngredientDTO, IngredientViewModel>()
+                .ForMember(to => to.Id, opt => opt.MapFrom(from => from.Id))
+                .ForMember(to => to.Name, opt => opt.MapFrom(from => from.Name))
+                .ForMember(to => to.Type, opt => opt.MapFrom(from => from));
+
+            CreateMap<IngredientDTO, IngredientTypeViewModel>()
+                .ForMember(to => to.Name, opt => opt.MapFrom(from => from.IngredientTypeName))
+                .ForMember(to => to.Id, opt => opt.MapFrom(from => from.IngredientTypeId));
+
+            CreateMap<CreateIngredientRequestObject, IngredientDTO>()
+                .ForMember(to => to.Name, opt => opt.MapFrom(dest => dest.Name))
+                .ForMember(to => to.IngredientTypeName, opt => opt.MapFrom(dest => dest.Type.Name))
+                .ForMember(to => to.IngredientTypeId, opt => opt.MapFrom(dest => dest.Type.Id))
+                .ForMember(to => to.Id, opt => opt.Ignore());
         }
     }
 

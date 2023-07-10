@@ -75,7 +75,7 @@ namespace DrinkMix
             var mapper = app.Services.GetRequiredService<IMapper>();
             mapper.ConfigurationProvider.AssertConfigurationIsValid();
 
-            // Configure the HTTP request pipeline.
+            // Configure the HTTP request pipeline. 
             if (app.Environment.IsDevelopment())
             {
                 app.UseMigrationsEndPoint();

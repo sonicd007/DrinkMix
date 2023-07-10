@@ -1,8 +1,9 @@
-﻿namespace DrinkMix.ViewModels
+﻿using DrinkMix.ViewModels;
+
+namespace DrinkMix.RequestObjects
 {
-    public class IngredientViewModel
+    public class CreateIngredientRequestObject
     {
-        public int Id { get; set; }
         public string Name { get; set; } = null!;
         public IngredientTypeViewModel Type { get; set; } = null!;
     }

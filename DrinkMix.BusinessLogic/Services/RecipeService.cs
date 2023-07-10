@@ -236,6 +236,7 @@ namespace DrinkMix.Services
 
             // Update the properties of the existing ingredient
             existingIngredient.Name = ingredient.Name;
+            existingIngredient.IngredientTypeId = ingredient.IngredientTypeId;
 
             // Save the changes to the database
             _dbContext.SaveChanges();

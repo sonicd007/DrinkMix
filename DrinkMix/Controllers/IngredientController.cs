@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DrinkMix.BusinessLogic.DTOs;
 using DrinkMix.BusinessLogic.Services.Interfaces;
+using DrinkMix.RequestObjects;
 using DrinkMix.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,20 +34,21 @@ namespace DrinkMix.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateIngredient([FromBody] IngredientViewModel Ingredient)
+        public IActionResult CreateIngredient([FromBody] CreateIngredientRequestObject createIngredientRequestObj)
         {
-            var IngredientDto = _mapper.Map<IngredientDTO>(Ingredient);
-            _recipeService.CreateIngredient(IngredientDto);
-            var viewModel = _mapper.Map<IngredientViewModel>(Ingredient);
+            var IngredientDto = _mapper.Map<IngredientDTO>(createIngredientRequestObj);
+            var createdIngredient = _recipeService.CreateIngredient(IngredientDto);
+            var viewModel = _mapper.Map<IngredientViewModel>(createdIngredient);
 
             return CreatedAtAction(nameof(CreateIngredient), new { id = viewModel.Id }, viewModel);
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateIngredient(int id, [FromBody] IngredientViewModel updatedIngredient)
+        public IActionResult UpdateIngredient(int id, [FromBody] CreateIngredientRequestObject updatedIngredient)
         {
-            var IngredientDto = _mapper.Map<IngredientDTO>(updatedIngredient);
-            var existingIngredient = _recipeService.UpdateIngredient(IngredientDto);
+            var ingredientDto = _mapper.Map<IngredientDTO>(updatedIngredient);
+            ingredientDto.Id = id;
+            var existingIngredient = _recipeService.UpdateIngredient(ingredientDto);
             var viewModel = _mapper.Map<IngredientViewModel>(existingIngredient);
 
             return Ok(viewModel);

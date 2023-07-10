@@ -13,3 +13,9 @@ Unable to create an object of type 'ApplicationDbContext'. For the different pat
 
 Try this: dotnet ef database update --project ../DrinkMix.DataAccess --context ApplicationDbContext -v --startup-project ../DrinkMix
 where the working directory is DrinkMix.DataAccess
+
+Create DrinkMix Database in db server via dbeaver
+Grant admin user account access to dbeaver schema
+Bootstrap the newly created database with ef
+dotnet ef database update --context ApplicationDbContext --project .\DrinkMix.DataAccess\ --startup-project .\DrinkMix\;
+dotnet ef database update --context DrinkMixDbContext --project .\DrinkMix.DataAccess\ --startup-project .\DrinkMix\

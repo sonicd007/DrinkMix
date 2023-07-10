@@ -8,7 +8,6 @@ namespace DrinkMix.BusinessLogic.DTOs
 {
     public class IngredientDTO : BaseDTO
     {
-
         public string Name { get; set; } = null!;
 
         public int IngredientTypeId { get; set; }

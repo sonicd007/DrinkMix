@@ -34,15 +34,15 @@ namespace DrinkMix.BusinessLogic.AutoMapperMappings
                 .ForMember(to => to.Recipes, opt => opt.Ignore())
                 .ReverseMap();
 
-            //CreateMap<IngredientDTO, Ingredient>()
-            //    .ForMember(to => to.Name, opt => opt.MapFrom(from => from.Name))
-            //    .ForMember(to => to.Id, opt => opt.MapFrom(from => from.Id))
-            //    //.ForMember(to => to.IdNavigation.Name, opt => opt.MapFrom(from => from.IngredientTypeName))
-            //    //.AfterMap((x, y) =>
-            //    //{
-            //    //    x.IngredientTypeName = y.IdNavigation.Name;
-            //    //})
-            //    .ReverseMap();
+            CreateMap<Ingredient, IngredientDTO>()
+                .ForMember(to => to.IngredientTypeName, opt => opt.MapFrom(from => from.Name))
+                .ForMember(to => to.Id, opt => opt.MapFrom(from => from.Id))
+                .ForMember(to => to.Name, opt => opt.MapFrom(from => from.Name))
+                .ForMember(to => to.IngredientTypeId, opt => opt.MapFrom(from => from.IngredientTypeId));
+
+            CreateMap<IngredientDTO, Ingredient>()
+                .ForMember(to => to.IdNavigation, opt => opt.Ignore())
+                .ForMember(to => to.RecipeIngredients, opt => opt.Ignore());
 
             CreateMap<IngredientTypeDTO, IngredientType>()
                 .ForMember(to => to.Id, opt => opt.MapFrom(from => from.Id))

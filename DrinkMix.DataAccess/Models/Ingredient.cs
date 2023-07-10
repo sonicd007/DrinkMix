@@ -5,8 +5,6 @@ namespace DrinkMix.Models;
 
 public partial class Ingredient : BaseDomainModel
 {
-    public int Id { get; set; }
-
     public string Name { get; set; } = null!;
 
     public int IngredientTypeId { get; set; }
