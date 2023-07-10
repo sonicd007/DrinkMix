@@ -14,7 +14,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrinkMix.DataAccess", "Drin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrinkMix.BusinessLogic", "DrinkMix.BusinessLogic\DrinkMix.BusinessLogic.csproj", "{3C7A7865-E250-4463-AC04-BCE64FAE41BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{A3E1C9E3-CFD7-487F-BCAB-6E07EAD9B2C5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrinkMix.Tests", "DrinkMix.Tests\DrinkMix.Tests.csproj", "{9FFED871-F318-4E7D-B919-26C6B1FFA636}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,10 +34,10 @@ Global
 		{3C7A7865-E250-4463-AC04-BCE64FAE41BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C7A7865-E250-4463-AC04-BCE64FAE41BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C7A7865-E250-4463-AC04-BCE64FAE41BC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A3E1C9E3-CFD7-487F-BCAB-6E07EAD9B2C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A3E1C9E3-CFD7-487F-BCAB-6E07EAD9B2C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A3E1C9E3-CFD7-487F-BCAB-6E07EAD9B2C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A3E1C9E3-CFD7-487F-BCAB-6E07EAD9B2C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FFED871-F318-4E7D-B919-26C6B1FFA636}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FFED871-F318-4E7D-B919-26C6B1FFA636}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FFED871-F318-4E7D-B919-26C6B1FFA636}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FFED871-F318-4E7D-B919-26C6B1FFA636}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
