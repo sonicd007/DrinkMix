@@ -32,7 +32,21 @@ namespace DrinkMix.Controllers
 
             return Ok(viewModel);
         }
+        [HttpGet]
+        public async Task<ActionResult<ICollection<IngredientViewModel>>> GetIngredients(int page = 1, int pageSize = 10)
+        {
+            if (null == _recipeService)
+            {
+                return NotFound();
+            }
 
+            var recipes = await _recipeService.GetIngredients(page, pageSize);
+
+            // Map the recipes to view models
+            ICollection<IngredientViewModel> ingredients = _mapper.Map<ICollection<IngredientViewModel>>(recipes);
+
+            return Ok(ingredients);
+        }
         [HttpPost]
         public IActionResult CreateIngredient([FromBody] CreateIngredientRequestObject createIngredientRequestObj)
         {

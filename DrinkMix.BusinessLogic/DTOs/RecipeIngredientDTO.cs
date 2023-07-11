@@ -14,6 +14,6 @@ namespace DrinkMix.BusinessLogic.DTOs
         public string? IngredientType { get; set; }
         public string? UnitOfMeasurement { get; set; }
         public double Quantity { get; set; }
-        public int IngredientTypeId { get; internal set; }
+        public int IngredientTypeId { get; set; }
     }
 }

@@ -85,7 +85,7 @@ namespace DrinkMix.Controllers
         // POST: api/Recipes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public ActionResult<RecipeViewModel> CreateRecipe(Recipe recipe)
+        public ActionResult<RecipeViewModel> CreateRecipe(CreateRecipeRequestObject recipe)
         {
             var createRecipeDto = _mapper.Map<RecipeDTO>(recipe);
             createRecipeDto = _recipeService.CreateRecipe(createRecipeDto);

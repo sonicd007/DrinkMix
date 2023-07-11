@@ -38,6 +38,21 @@ namespace DrinkMix.Services
         public RecipeDTO CreateRecipe(RecipeDTO recipe)
         {
             Recipe newRecipe = _mapper.Map<Recipe>(recipe);
+            var ingredientsIds = newRecipe.RecipeIngredients.Select(x => x.Id).ToList();
+            var ingredients = _dbContext.Ingredients.Where(x => ingredientsIds.Contains(x.Id)).ToList();
+            newRecipe.RecipeIngredients = new List<RecipeIngredient>();
+            //foreach (var rp in ingredients)
+            //{
+            //    newRecipe.RecipeIngredients.Add(new RecipeIngredient
+            //    {
+            //        Id = rp.Id,
+                    
+            //    });
+            //}
+            //newRecipe.RecipeIngredients.Add(new RecipeIngredient()
+            //{
+            //    Id = ingredientsIds.
+            //});
             _dbContext.Recipes.Add(newRecipe);
             _dbContext.SaveChanges();
             return _mapper.Map<RecipeDTO>(newRecipe);
@@ -147,22 +162,6 @@ namespace DrinkMix.Services
             return ingredientDto;
         }
 
-        public async Task<List<RecipeDTO?>> GetRecipes(int page, int pageSize)
-        {
-            // Calculate the number of items to skip based on the page and pageSize
-            int skipCount = (page - 1) * pageSize;
-
-            // Retrieve the recipes asynchronously with pagination
-            List<Recipe> recipes = await _dbContext.Recipes.AsQueryable()
-                .Skip(skipCount)
-                .Take(pageSize)
-                .ToListAsync();
-
-            List<RecipeDTO?> foundRecipes = _mapper.Map<List<RecipeDTO?>>(recipes);
-
-            return foundRecipes;
-        }
-
         public GlassTypeDTO? CreateGlassType(GlassTypeDTO glassTypeDto)
         {
             var glassType = _mapper.Map<GlassType>(glassTypeDto);
@@ -260,7 +259,16 @@ namespace DrinkMix.Services
 
         public IngredientTypeDTO? CreateIngredientType(IngredientTypeDTO ingredientTypeDto)
         {
-            throw new NotImplementedException();
+            var newIngredientType = _mapper.Map<IngredientType>(ingredientTypeDto);
+
+            // Add the new ingredient to the DbSet
+            _dbContext.IngredientTypes.Add(newIngredientType);
+
+            // Save the changes to the database
+            _dbContext.SaveChanges();
+
+            // Map the new ingredient to DTO and return it
+            return _mapper.Map<IngredientTypeDTO>(newIngredientType);
         }
 
         public IngredientTypeDTO? UpdateIngredientType(IngredientTypeDTO ingredientTypeDto)
@@ -278,21 +286,42 @@ namespace DrinkMix.Services
             throw new NotImplementedException();
         }
 
-        public async Task<ICollection<IngredientTypeDTO?>> GetIngredientTypes(int page, int pageSize)
+        public async Task<ICollection<IngredientTypeDTO>> GetIngredientTypes(int page, int pageSize)
+        {
+            return await this.GetPaginatedItems<IngredientType, IngredientTypeDTO>(page, pageSize);
+        }
+
+        public async Task<ICollection<IngredientDTO>> GetIngredients(int page, int pageSize)
+        {
+            return await this.GetPaginatedItems<Ingredient, IngredientDTO>(page, pageSize);
+        }
+        public async Task<ICollection<GlassTypeDTO>> GetGlassTypes(int page, int pageSize)
+        {
+            return await this.GetPaginatedItems<GlassType, GlassTypeDTO>(page, pageSize);
+        }
+
+        public async Task<ICollection<RecipeDTO>> GetRecipes(int page, int pageSize)
+        {
+            return await this.GetPaginatedItems<Recipe, RecipeDTO>(page, pageSize);
+        }
+
+        private async Task<ICollection<TDTO>> GetPaginatedItems<T, TDTO>(int page, int pageSize) where T : BaseDomainModel
         {
             // Calculate the number of items to skip based on the page and pageSize
             int skipCount = (page - 1) * pageSize;
 
-            // Retrieve the recipes asynchronously with pagination
-            List<IngredientType> ingredientTypes = await _dbContext.IngredientTypes.AsQueryable()
+            // Retrieve the items asynchronously with pagination
+            var items = await _dbContext.Set<T>()
+                .OrderBy(x => x.Id)
                 .Skip(skipCount)
                 .Take(pageSize)
                 .ToListAsync();
 
-            var foundIngredientsTypes = _mapper.Map<ICollection<IngredientTypeDTO?>>(ingredientTypes);
+            var dtoItems = _mapper.Map<ICollection<TDTO>>(items);
 
-            return foundIngredientsTypes;
+            return dtoItems;
         }
+
     }
 
 }

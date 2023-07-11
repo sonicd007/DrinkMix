@@ -20,12 +20,13 @@ namespace DrinkMix.BusinessLogic.AutoMapperMappings
                 .ForMember(to => to.IngredientName, opt => opt.MapFrom(from => from.Ingredient.Name))
                 .ForMember(to => to.Quantity, opt => opt.MapFrom(from => from.Quantity))
                 .ForMember(to => to.UnitOfMeasurement, opt => opt.MapFrom(from => from.UnitOfMeasurement))
-                .ForMember(to => to.RecipeIngredientId, opt => opt.MapFrom(from => from.RecipeId));
-
+                .ForMember(to => to.RecipeIngredientId, opt => opt.MapFrom(from => from.RecipeId))
+                .ReverseMap();
 
             CreateMap<Recipe, RecipeDTO>()
                 .ForMember(to => to.GlassName, opt => opt.MapFrom(from => from.GlassType.Name))
-                .ForMember(to => to.Ingredients, opt => opt.Ignore())//.MapFrom(to => to.RecipeIngredients))
+                .ForMember(to => to.GlassTypeId, opt => opt.MapFrom(from => from.GlassType.Id))
+                .ForMember(to => to.Ingredients, opt => opt.MapFrom(to => to.RecipeIngredients))
                 .ReverseMap();
 
             CreateMap<GlassTypeDTO, GlassType>()

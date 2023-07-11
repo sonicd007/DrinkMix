@@ -32,6 +32,22 @@ namespace DrinkMix.Controllers
             return Ok(viewModel);
         }
 
+        [HttpGet]
+        public async Task<ActionResult<ICollection<GlassTypeViewModel>>> GetGlassTypes(int page = 1, int pageSize = 10)
+        {
+            if (null == _recipeService)
+            {
+                return NotFound();
+            }
+
+            var glassTypes = await _recipeService.GetGlassTypes(page, pageSize);
+
+            // Map the recipes to view models
+            ICollection<GlassTypeViewModel> glassTypeViewModel = _mapper.Map<ICollection<GlassTypeViewModel>>(glassTypes);
+
+            return Ok(glassTypeViewModel);
+        }
+
         [HttpPost]
         public IActionResult CreateGlassType([FromBody] GlassTypeViewModel glassType)
         {

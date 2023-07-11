@@ -5,7 +5,6 @@ namespace DrinkMix.BusinessLogic.Services.Interfaces
 {
     public interface IRecipeService
     {
-        Task<List<RecipeDTO?>> GetRecipes(int page, int pageSize);
         RecipeDTO? GetRecipeById(int recipeId);
         RecipeDTO? CreateRecipe(RecipeDTO recipe);
         RecipeDTO? UpdateRecipe(RecipeDTO recipe);
@@ -22,6 +21,9 @@ namespace DrinkMix.BusinessLogic.Services.Interfaces
         IngredientTypeDTO? UpdateIngredientType(IngredientTypeDTO ingredientTypeDto);
         Task<bool> DeleteIngredientType(int id);
         Task<bool> DeleteIngredient(int id);
-        Task<ICollection<IngredientTypeDTO?>> GetIngredientTypes(int page, int pageSize);
+        Task<ICollection<IngredientTypeDTO>> GetIngredientTypes(int page, int pageSize);
+        Task<ICollection<IngredientDTO>> GetIngredients(int page, int pageSize);
+        Task<ICollection<RecipeDTO>> GetRecipes(int page, int pageSize);
+        Task<ICollection<GlassTypeDTO>> GetGlassTypes(int page, int pageSize);
     }
 }

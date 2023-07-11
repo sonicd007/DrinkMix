@@ -22,7 +22,7 @@ namespace DrinkMix.Tests
         }
 
         [TestMethod]
-        public void UpdateIngredient_updates_name_and_type_info()
+        public void UpdateIngredient_happy_path()
         {
             Ingredient unmodifiedIngredient = new Ingredient()
             { 
@@ -46,6 +46,52 @@ namespace DrinkMix.Tests
             var recipeService = new RecipeService(mockContext.Object, _mapper);
             
             var updatedObject = recipeService.UpdateIngredient(updatedIngredient);
+
+            mockSet.Verify(m => m.Find(1), Times.Once);
+            mockContext.Verify(m => m.SaveChanges(), Times.Once());
+            Assert.AreEqual(updatedObject.Name, updatedIngredient.Name);
+            Assert.AreEqual(updatedObject.IngredientTypeId, updatedIngredient.IngredientTypeId);
+        }
+
+        [TestMethod]
+        public void CreateRecipe_happy_path()
+        {
+            Ingredient ingredientOne = new Ingredient()
+            {
+                IngredientTypeId = 1,
+                Id = 1,
+                Name = "Maker's Mark"
+            };
+            var recipeDto = new RecipeDTO()
+            {
+                Description = "A description",
+                GlassName = "Low Ball",
+                Name = "Old Fashion",
+                GlassTypeId = 1,
+                Ingredients = new List<RecipeIngredientDTO>()
+                {
+                    new RecipeIngredientDTO()
+                    {
+                        IngredientId = ingredientOne.Id,
+                        IngredientName = ingredientOne.Name,
+                        Quantity = 1,
+                        RecipeIngredientId = 1,
+                        UnitOfMeasurement = "oz",
+                        IngredientTypeId = 1,
+                        IngredientType = "Foo"
+                    }
+                }
+            };
+
+            var mockSet = new Mock<DbSet<Ingredient>>();
+            var mockContext = new Mock<DrinkMixDbContext>();
+
+            mockSet.Setup(m => m.Find(It.IsAny<int>())).Returns(ingredientOne);
+            mockContext.Setup(m => m.Ingredients).Returns(mockSet.Object);
+
+            var recipeService = new RecipeService(mockContext.Object, _mapper);
+
+            var updatedObject = recipeService.CreateRecipe(recipeDto);
 
             mockSet.Verify(m => m.Find(1), Times.Once);
             mockContext.Verify(m => m.SaveChanges(), Times.Once());

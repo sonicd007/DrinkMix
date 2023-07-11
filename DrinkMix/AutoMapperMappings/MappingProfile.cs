@@ -2,6 +2,7 @@
 using DrinkMix.BusinessLogic.DTOs;
 using DrinkMix.RequestObjects;
 using DrinkMix.ViewModels;
+using Microsoft.OpenApi.Writers;
 
 namespace DrinkMix.AutoMapperMappings
 {
@@ -14,7 +15,8 @@ namespace DrinkMix.AutoMapperMappings
                 .ForMember(x => x.UnitOfMeasurement, opt => opt.MapFrom(y => y.UnitOfMeasurement))
                 .ForMember(x => x.IngredientId, opt => opt.MapFrom(y => y.IngredientId))
                 .ForMember(x => x.RecipeId, opt => opt.MapFrom(y => y.RecipeIngredientId))
-                .ForMember(x => x.IngredientName, opt => opt.MapFrom(y => y.IngredientName));
+                .ForMember(x => x.IngredientName, opt => opt.MapFrom(y => y.IngredientName))
+                .ReverseMap();
 
             CreateMap<RecipeDTO, RecipeViewModel>()
                 .ForMember(x => x.Id, opt => opt.MapFrom(y => y.Id))
@@ -24,7 +26,6 @@ namespace DrinkMix.AutoMapperMappings
                 .ForMember(x => x.GlassType, opt => opt.MapFrom(y => y.GlassName))
                 .ForMember(x => x.RecipeIngredients, opt => opt.MapFrom(y => y.Ingredients));
                 
-
             CreateMap<GlassTypeDTO, GlassTypeViewModel>()
                 .ForMember(to => to.Id, opt => opt.MapFrom(from => from.Id))
                 .ForMember(to => to.Name, opt => opt.MapFrom(from => from.Name))
@@ -48,6 +49,20 @@ namespace DrinkMix.AutoMapperMappings
                 .ForMember(to => to.IngredientTypeName, opt => opt.MapFrom(dest => dest.Type.Name))
                 .ForMember(to => to.IngredientTypeId, opt => opt.MapFrom(dest => dest.Type.Id))
                 .ForMember(to => to.Id, opt => opt.Ignore());
+
+            CreateMap<CreateIngredientTypeRequestObject, IngredientTypeDTO>()
+                .ForMember(to => to.Id, opt => opt.Ignore());
+
+            CreateMap<CreateIngredientTypeRequestObject, IngredientTypeViewModel>()
+                .ForMember(to => to.Id, opt => opt.Ignore());
+
+            CreateMap<CreateRecipeRequestObject, RecipeDTO>()
+                .ForMember(to => to.Id, opt => opt.Ignore())
+                .ForMember(to => to.GlassName, opt => opt.Ignore())
+                .ForMember(to => to.Description, opt => opt.MapFrom(from => from.Description))
+                .ForMember(to => to.Name, opt => opt.MapFrom(from => from.Name))
+                .ForMember(to => to.GlassTypeId, opt => opt.MapFrom(from => from.GlassTypeId))
+                .ForMember(to => to.Ingredients, opt => opt.MapFrom(from => from.RecipeIngredients));
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DrinkMix.BusinessLogic.DTOs;
 using DrinkMix.BusinessLogic.Services.Interfaces;
+using DrinkMix.RequestObjects;
 using DrinkMix.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -49,13 +50,13 @@ namespace DrinkMix.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateIngredientType([FromBody] IngredientTypeViewModel IngredientType)
+        public IActionResult CreateIngredientType([FromBody] CreateIngredientTypeRequestObject ingredientType)
         {
-            var IngredientTypeDto = _mapper.Map<IngredientTypeDTO>(IngredientType);
-            _recipeService.CreateIngredientType(IngredientTypeDto);
-            var viewModel = _mapper.Map<IngredientTypeViewModel>(IngredientType);
+            var IngredientTypeDto = _mapper.Map<IngredientTypeDTO>(ingredientType);
+            var newIngredient = _recipeService.CreateIngredientType(IngredientTypeDto);
+            var viewModel = _mapper.Map<IngredientTypeViewModel>(newIngredient);
 
-            return CreatedAtAction(nameof(CreateIngredientType), new { id = viewModel.Id }, viewModel);
+            return CreatedAtAction(nameof(CreateIngredientType), new { id = viewModel.Id }, newIngredient);
         }
 
         [HttpPut("{id}")]
