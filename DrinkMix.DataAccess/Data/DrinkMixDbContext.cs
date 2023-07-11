@@ -56,13 +56,16 @@ public partial class DrinkMixDbContext : DbContext
             entity.Property(e => e.Id)
                 .ValueGeneratedOnAdd()
                 .HasColumnType("int(11)");
+
+            entity.HasIndex(e => e.IngredientTypeId, "ingredient_FK");
+
             entity.Property(e => e.IngredientTypeId).HasColumnType("int(11)");
             entity.Property(e => e.Name).HasMaxLength(255);
 
-            entity.HasOne(d => d.IdNavigation).WithOne(p => p.Ingredient)
-                .HasForeignKey<Ingredient>(d => d.Id)
+            entity.HasOne(d => d.IngredientType).WithMany(p => p.Ingredients)
+                .HasForeignKey(d => d.IngredientTypeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("Ingredient_FK");
+                .HasConstraintName("ingredient_FK");
         });
 
         modelBuilder.Entity<IngredientType>(entity =>

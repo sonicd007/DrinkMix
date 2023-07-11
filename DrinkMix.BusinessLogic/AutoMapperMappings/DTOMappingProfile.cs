@@ -15,7 +15,7 @@ namespace DrinkMix.BusinessLogic.AutoMapperMappings
         {
             CreateMap<RecipeIngredient, RecipeIngredientDTO>()
                 .ForMember(to => to.IngredientId, opt => opt.MapFrom(from => from.Ingredient.Id))
-                .ForMember(to => to.IngredientType, opt => opt.MapFrom(from => from.Ingredient.IdNavigation.Name))
+                .ForMember(to => to.IngredientType, opt => opt.MapFrom(from => from.Ingredient.IngredientType.Name))
                 .ForMember(to => to.IngredientTypeId, opt => opt.MapFrom(from => from.Ingredient.IngredientTypeId))
                 .ForMember(to => to.IngredientName, opt => opt.MapFrom(from => from.Ingredient.Name))
                 .ForMember(to => to.Quantity, opt => opt.MapFrom(from => from.Quantity))
@@ -26,8 +26,12 @@ namespace DrinkMix.BusinessLogic.AutoMapperMappings
             CreateMap<Recipe, RecipeDTO>()
                 .ForMember(to => to.GlassName, opt => opt.MapFrom(from => from.GlassType.Name))
                 .ForMember(to => to.GlassTypeId, opt => opt.MapFrom(from => from.GlassType.Id))
-                .ForMember(to => to.Ingredients, opt => opt.MapFrom(to => to.RecipeIngredients))
-                .ReverseMap();
+                .ForMember(to => to.Ingredients, opt => opt.MapFrom(to => to.RecipeIngredients));
+            CreateMap<RecipeDTO, Recipe>()
+                .ForMember(to => to.GlassTypeId, opt => opt.MapFrom(from => from.GlassTypeId))
+                .ForMember(to => to.GlassType, opt => opt.Ignore())
+                .ForMember(to => to.RecipeIngredients, opt => opt.MapFrom(to => to.Ingredients));
+            //.ReverseMap();
 
             CreateMap<GlassTypeDTO, GlassType>()
                 .ForMember(to => to.Name, opt => opt.MapFrom(from => from.Name))
@@ -42,13 +46,13 @@ namespace DrinkMix.BusinessLogic.AutoMapperMappings
                 .ForMember(to => to.IngredientTypeId, opt => opt.MapFrom(from => from.IngredientTypeId));
 
             CreateMap<IngredientDTO, Ingredient>()
-                .ForMember(to => to.IdNavigation, opt => opt.Ignore())
+                .ForMember(to => to.IngredientType, opt => opt.Ignore())
                 .ForMember(to => to.RecipeIngredients, opt => opt.Ignore());
 
             CreateMap<IngredientTypeDTO, IngredientType>()
                 .ForMember(to => to.Id, opt => opt.MapFrom(from => from.Id))
                 .ForMember(to => to.Name, opt => opt.MapFrom(from => from.Name))
-                .ForMember(to => to.Ingredient, opt => opt.Ignore())
+                .ForMember(to => to.Ingredients, opt => opt.Ignore())
                 .ReverseMap();
         }
     }

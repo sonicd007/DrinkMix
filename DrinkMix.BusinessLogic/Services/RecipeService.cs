@@ -38,23 +38,39 @@ namespace DrinkMix.Services
         public RecipeDTO CreateRecipe(RecipeDTO recipe)
         {
             Recipe newRecipe = _mapper.Map<Recipe>(recipe);
-            var ingredientsIds = newRecipe.RecipeIngredients.Select(x => x.Id).ToList();
+            newRecipe.GlassType = null;
+            var ingredientsIds = newRecipe.RecipeIngredients.Select(x => x.IngredientId).ToList();
             var ingredients = _dbContext.Ingredients.Where(x => ingredientsIds.Contains(x.Id)).ToList();
             newRecipe.RecipeIngredients = new List<RecipeIngredient>();
-            //foreach (var rp in ingredients)
-            //{
-            //    newRecipe.RecipeIngredients.Add(new RecipeIngredient
-            //    {
-            //        Id = rp.Id,
-                    
-            //    });
-            //}
-            //newRecipe.RecipeIngredients.Add(new RecipeIngredient()
-            //{
-            //    Id = ingredientsIds.
-            //});
+            
+            // Populate the ingredients
+            foreach (var ingredient in ingredients)
+            {
+                var recipeIngredient = recipe.Ingredients.Where(x => x.IngredientId == ingredient.Id).FirstOrDefault();
+                if (null != recipeIngredient)
+                {
+                    newRecipe.RecipeIngredients.Add(new RecipeIngredient
+                    {
+                        IngredientId = ingredient.Id,
+                        Quantity = recipeIngredient.Quantity,
+                        UnitOfMeasurement = recipeIngredient.UnitOfMeasurement
+                    });
+                }
+            }
+
             _dbContext.Recipes.Add(newRecipe);
+            _dbContext.ChangeTracker.DetectChanges();
+            Console.WriteLine(_dbContext.ChangeTracker.DebugView.LongView);
             _dbContext.SaveChanges();
+
+            newRecipe = _dbContext.Recipes
+                .Where(x => x.Id == newRecipe.Id)
+                .Include(x => x.GlassType)
+                .Include(x => x.RecipeIngredients)
+                .ThenInclude(x => x.Ingredient)
+                .ThenInclude(x => x.IngredientType)
+                .FirstOrDefault();
+
             return _mapper.Map<RecipeDTO>(newRecipe);
         }
 

@@ -12,7 +12,7 @@ public partial class Recipe : BaseDomainModel
 
     public int GlassTypeId { get; set; }
 
-    public virtual GlassType GlassType { get; set; } = null!;
+    public virtual GlassType? GlassType { get; set; }
 
     public virtual ICollection<RecipeIngredient> RecipeIngredients { get; set; } = new List<RecipeIngredient>();
 }

@@ -30,6 +30,7 @@ namespace DrinkMix.Tests
                 Id = 1,
                 Name = "Maker's Mark"
             };
+
             IngredientDTO updatedIngredient = new IngredientDTO()
             {
                 IngredientTypeId = 2,
@@ -37,6 +38,7 @@ namespace DrinkMix.Tests
                 Id = 1,
                 Name = "Blue Sapphire"
             };
+
             var mockSet = new Mock<DbSet<Ingredient>>();
             var mockContext = new Mock<DrinkMixDbContext>();
 
