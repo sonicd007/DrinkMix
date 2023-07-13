@@ -5,6 +5,7 @@ import { Catalog } from "./components/Catalog";
 import { WhatCanIMake } from './components/WhatCanIMake';
 import { Search } from './components/Search';
 import { DrinkDetail } from './components/DrinkDetail';
+import CreateRecipeForm from './components/CreateRecipeForm';
 
 const AppRoutes = [
     {
@@ -21,7 +22,7 @@ const AppRoutes = [
     },
     {
         path: '/wip',
-        element: <DrinkDetail />
+        element: <CreateRecipeForm />
     },
     {
         path: '/counter',

@@ -1,0 +1,32 @@
+DrinkMix
+	ClientApp
+		Polish TODO
+			Make drink cards same height regardless of content
+			Highlight current page on nav menu
+			Add nav icons
+			Fix happy alcoholics image and align right on desktops
+			Round out the border of the cocktail images
+			Display the ingredients a bit nicer, not sure what needs to be done with this yet
+			Drink Detail animation of glass filling with ingredients
+		Functionality TODO
+			Hook up apis to UI
+			Finish the other pages styles
+	REST API
+		Request objects should be specific to each controller and only allow data that's necessary to do the task at hand
+		Response objects: Need to create a generic response object with data, error, message, etc.
+		Implement each controller, test, create unit test when completed
+		Look into authorization roles using net core identity setup
+
+DrinkMix.DataAccess
+	MVP
+		Cocktail recipes are public. Only the administrator can create them. End users will only be able to rate the cocktails and favorite them.
+	Phase 2
+		Individuals should be able to make their own recipes for fun and social interactivity. This means a USER -> has MANY recipes.
+		Current public recipes will need to be assigned the "drinkmix" user or something so that users know this is a public recipe.
+		Recipes will need a createdby field so users know who makes the best cocktails ;)
+		Implement favorite and rating features
+		Plan out recipe variations, any sort of "whiskey" ingredient replacement, search, etc.
+		Write down use cases to model appropriately
+
+
+	    
