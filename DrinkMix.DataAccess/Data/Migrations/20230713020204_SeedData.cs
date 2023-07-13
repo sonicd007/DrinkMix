@@ -40,7 +40,9 @@ namespace DrinkMix.DataAccess.DrinkMix.DataAccess.Data.Migrations
                     { 3, "Gin" },
                     { 4, "Rum" },
                     { 5, "Tequila" },
-                    { 6, "Sweetener" }
+                    { 6, "Sweetener" },
+                    { 7, "Tincture" },
+                    { 8, "Juice"}
                 });
         }
 

@@ -89,7 +89,7 @@ namespace DrinkMix.Controllers
             var createRecipeDto = _mapper.Map<RecipeDTO>(recipe);
             createRecipeDto = _recipeService.CreateRecipe(createRecipeDto);
             var viewModel = _mapper.Map<RecipeViewModel>(createRecipeDto);
-            return CreatedAtAction("GetRecipe", new { id = viewModel.Id }, viewModel);
+            return CreatedAtAction("CreateRecipe", new { id = viewModel.Id }, viewModel);
         }
 
         private bool RecipeExists(int id)

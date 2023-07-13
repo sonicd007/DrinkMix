@@ -238,6 +238,8 @@ namespace DrinkMix.Services
             // Save the changes to the database
             _dbContext.SaveChanges();
 
+            newIngredient.IngredientType = _dbContext.IngredientTypes.Where(x => x.Id == newIngredient.IngredientTypeId).First();
+
             // Map the new ingredient to DTO and return it
             return _mapper.Map<IngredientDTO>(newIngredient);
         }

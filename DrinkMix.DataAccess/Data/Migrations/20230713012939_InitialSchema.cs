@@ -245,7 +245,7 @@ namespace DrinkMix.DataAccess.DrinkMix.DataAccess.Data.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<int>(type: "integer", nullable: false),
+                    Name = table.Column<string>(type: "character varying", nullable: false),
                     Description = table.Column<string>(type: "character varying", nullable: false),
                     ImageUrl = table.Column<string>(type: "character varying", nullable: true),
                     GlassTypeId = table.Column<int>(type: "integer", nullable: false)

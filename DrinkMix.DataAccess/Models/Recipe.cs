@@ -5,7 +5,7 @@ namespace DrinkMix.DataAccess.Models;
 
 public partial class Recipe : BaseDomainModel
 {
-    public int Name { get; set; }
+    public string Name { get; set; }
 
     public string Description { get; set; } = null!;
 

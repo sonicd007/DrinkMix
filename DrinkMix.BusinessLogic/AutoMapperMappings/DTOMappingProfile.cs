@@ -32,7 +32,8 @@ namespace DrinkMix.BusinessLogic.AutoMapperMappings
                 .ForMember(to => to.GlassTypeId, opt => opt.MapFrom(from => from.GlassTypeId))
                 .ForMember(to => to.GlassType, opt => opt.Ignore())
                 .ForMember(to => to.RecipeIngredients, opt => opt.MapFrom(to => to.Ingredients))
-                .ForMember(to => to.ImageUrl, opt => opt.MapFrom(to => to.ImageUrl));
+                .ForMember(to => to.ImageUrl, opt => opt.MapFrom(to => to.ImageUrl))
+                .ForMember(to => to.Name, opt => opt.MapFrom(to => to.Name));
             //.ReverseMap();
 
             CreateMap<GlassTypeDTO, GlassType>()
@@ -42,7 +43,7 @@ namespace DrinkMix.BusinessLogic.AutoMapperMappings
                 .ReverseMap();
 
             CreateMap<Ingredient, IngredientDTO>()
-                .ForMember(to => to.IngredientTypeName, opt => opt.MapFrom(from => from.Name))
+                .ForMember(to => to.IngredientTypeName, opt => opt.MapFrom(from => from.IngredientType.Name))
                 .ForMember(to => to.Id, opt => opt.MapFrom(from => from.Id))
                 .ForMember(to => to.Name, opt => opt.MapFrom(from => from.Name))
                 .ForMember(to => to.IngredientTypeId, opt => opt.MapFrom(from => from.IngredientTypeId));

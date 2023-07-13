@@ -47,8 +47,8 @@ namespace DrinkMix.AutoMapperMappings
 
             CreateMap<CreateIngredientRequestObject, IngredientDTO>()
                 .ForMember(to => to.Name, opt => opt.MapFrom(dest => dest.Name))
-                .ForMember(to => to.IngredientTypeName, opt => opt.MapFrom(dest => dest.Type.Name))
-                .ForMember(to => to.IngredientTypeId, opt => opt.MapFrom(dest => dest.Type.Id))
+                .ForMember(to => to.IngredientTypeId, opt => opt.MapFrom(dest => dest.IngredientTypeId))
+                .ForMember(to => to.IngredientTypeName, opt => opt.Ignore())
                 .ForMember(to => to.Id, opt => opt.Ignore());
 
             CreateMap<CreateIngredientTypeRequestObject, IngredientTypeDTO>()
