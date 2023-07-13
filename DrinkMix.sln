@@ -16,11 +16,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrinkMix.Tests", "DrinkMix.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrinkMix.DataAccess", "DrinkMix.DataAccess\DrinkMix.DataAccess.csproj", "{BDD5E44D-DF8C-414A-9B2C-4F5E4D360FA0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{C671E485-72ED-4841-AA46-BA2A8C53DFCD}"
-	ProjectSection(SolutionItems) = preProject
-		apssettings.json = apssettings.json
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
