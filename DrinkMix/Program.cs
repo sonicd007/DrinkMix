@@ -1,6 +1,5 @@
 using DrinkMix.BusinessLogic.Services.Interfaces;
 using DrinkMix.Data;
-using DrinkMix.Models;
 using DrinkMix.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
@@ -13,6 +12,8 @@ using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using DrinkMix.BusinessLogic.AutoMapperMappings;
+using DrinkMix.DataAccess.Models;
+using DrinkMix.DataAccess.Data;
 
 namespace DrinkMix
 {
@@ -23,15 +24,13 @@ namespace DrinkMix
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            var drinkMixConnectionString = builder.Configuration["DrinkMixDatabase:ConnectionString"] ?? throw new InvalidOperationException("Connection string 'DrinkMixDatabase' not found.");
+            var drinkMixConnectionString = builder.Configuration.GetConnectionString("DrinkMixDatabase") ?? throw new InvalidOperationException("Connection string 'DrinkMixDatabase' not found.");
 
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseMySql(drinkMixConnectionString,
-                ServerVersion.AutoDetect(drinkMixConnectionString)));
+                options.UseNpgsql(drinkMixConnectionString));
 
             builder.Services.AddDbContext<DrinkMixDbContext>(options =>
-                options.UseMySql(drinkMixConnectionString,
-                ServerVersion.AutoDetect(drinkMixConnectionString)));
+                options.UseNpgsql(drinkMixConnectionString));
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace DrinkMix.Models
+namespace DrinkMix.DataAccess.Models
 {
     public class ApplicationUser : IdentityUser
     {

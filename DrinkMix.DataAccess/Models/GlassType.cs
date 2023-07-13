@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 
-namespace DrinkMix.Models;
+namespace DrinkMix.DataAccess.Models;
 
 public partial class GlassType : BaseDomainModel
 {

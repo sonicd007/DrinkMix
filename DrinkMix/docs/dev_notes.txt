@@ -1,21 +1,30 @@
-// Steps for creating secrets and scaffolding db
+// Steps for creating secrets (not using anymore)
 dotnet user-secrets init
 dotnet user-secrets set "DrinkMixDatabase:ConnectionString" "server=127.0.0.1;user=admin;password=foobar;database=DrinkMix"
-dotnet ef dbcontext scaffold "Name=DrinkMixDatabase:ConnectionString" "Pomelo.EntityFrameworkCore.MySql"
-dotnet ef migrations add InitialSchema --context DrinkMixDbContext -o .\Data\Migrations\
+
+// Steps for initial reverse engineer
+dotnet ef dbcontext scaffold "Name=DrinkMixDatabase:ConnectionString" "Npgsql.EntityFrameworkCore.PostgreSQL"
+
+// Steps for creating migration
+Change working directory to root (where sln file is)
+dotnet ef migrations add InitialSchema -v --context DrinkMixDbContext -o .\Data\Migrations\ --project DrinkMix.DataAccess --startup-project DrinkMix
 dotnet ef migrations remove --context DrinkMixDbContext
 dotnet ef database update --context DrinkMixDbContext
 dotnet ef database update --context ApplicationDbContext
 
-
+// Common issues
 Seeing this error when trying to migrate the data access project?
 Unable to create an object of type 'ApplicationDbContext'. For the different patterns supported at design time, see https://go.microsoft.com/fwlink/?linkid=851728
-
-Try this: dotnet ef database update --project ../DrinkMix.DataAccess --context ApplicationDbContext -v --startup-project ../DrinkMix
-where the working directory is DrinkMix.DataAccess
+dotnet ef database update --project ./DrinkMix.DataAccess --context ApplicationDbContext -v --startup-project ./DrinkMix
 
 Create DrinkMix Database in db server via dbeaver
 Grant admin user account access to dbeaver schema
 Bootstrap the newly created database with ef
 dotnet ef database update --context ApplicationDbContext --project .\DrinkMix.DataAccess\ --startup-project .\DrinkMix\;
+dotnet ef database update --context DrinkMixDbContext --project .\DrinkMix.DataAccess\ --startup-project .\DrinkMix\
+
+dotnet ef dbcontext scaffold "Name=DrinkMixDatabase:ConnectionString" "Npgsql.EntityFrameworkCore.PostgreSQL" -o updated_models --project ./DrinkMix
+
+// Common commands
+dotnet ef migrations add SeedData --context DrinkMixDbContext --project .\DrinkMix.DataAccess\ --startup-project .\DrinkMix\
 dotnet ef database update --context DrinkMixDbContext --project .\DrinkMix.DataAccess\ --startup-project .\DrinkMix\

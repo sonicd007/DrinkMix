@@ -1,5 +1,4 @@
-﻿using DrinkMix.Models;
-
+﻿
 namespace DrinkMix.ViewModels
 {
     public class RecipeIngredientViewModel

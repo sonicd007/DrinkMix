@@ -1,5 +1,4 @@
-﻿using DrinkMix.Models;
-
+﻿
 namespace DrinkMix.ViewModels
 {
     public class RecipeViewModel
@@ -13,6 +12,7 @@ namespace DrinkMix.ViewModels
         public int GlassTypeId { get; set; }
 
         public string GlassType { get; set; } = null!;
+        public string ImageUrl { get; set; }
 
         public virtual ICollection<RecipeIngredientViewModel> RecipeIngredients { get; set; } = new List<RecipeIngredientViewModel>();
     }

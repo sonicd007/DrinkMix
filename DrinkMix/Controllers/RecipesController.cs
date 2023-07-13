@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 using DrinkMix.Data;
 using DrinkMix.ViewModels;
 using DrinkMix.BusinessLogic.Services.Interfaces;
-using DrinkMix.Models;
 using AutoMapper;
 using DrinkMix.Services;
 using DrinkMix.RequestObjects;

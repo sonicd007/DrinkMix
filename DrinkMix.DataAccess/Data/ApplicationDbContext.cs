@@ -1,10 +1,10 @@
-﻿using DrinkMix.Models;
+﻿using DrinkMix.DataAccess.Models;
 using Duende.IdentityServer.EntityFramework.Options;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
-namespace DrinkMix.Data
+namespace DrinkMix.DataAccess.Data
 {
     public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
     {

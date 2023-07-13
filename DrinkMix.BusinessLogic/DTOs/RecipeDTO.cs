@@ -12,6 +12,7 @@ namespace DrinkMix.BusinessLogic.DTOs
         public string Description { get; set; }
         public int GlassTypeId { get; set; }
         public string GlassName { get; set; }
+        public string ImageUrl { get; set; }
         public List<RecipeIngredientDTO> Ingredients { get; set; }
 
         public RecipeDTO()

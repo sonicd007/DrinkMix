@@ -7,18 +7,17 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace DrinkMix.Data.Migrations
+namespace DrinkMix.Migrations.DrinkMixDb
 {
     [DbContext(typeof(DrinkMixDbContext))]
-    [Migration("20230630185502_InitialSchema")]
-    partial class InitialSchema
+    [Migration("20230701042200_SeedData")]
+    partial class SeedData
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .UseCollation("utf8_general_ci")
                 .HasAnnotation("ProductVersion", "7.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
@@ -28,7 +27,7 @@ namespace DrinkMix.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -39,16 +38,78 @@ namespace DrinkMix.Data.Migrations
                         .HasName("PRIMARY");
 
                     b.ToTable("GlassType", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Red Wine Glass"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "White Wine Glass"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Flute Glass"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Cocktail Glass"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Highball Glass"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Lowball Glass"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Irish Coffee Glass"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Hurricane Glass"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Martini Glass"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Margarita Glass"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "The glencairn Whiskey Glass"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "Snifter Glass"
+                        });
                 });
 
             modelBuilder.Entity("DrinkMix.Models.Ingredient", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
                     b.Property<int>("IngredientTypeId")
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -65,7 +126,7 @@ namespace DrinkMix.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -79,19 +140,46 @@ namespace DrinkMix.Data.Migrations
                         .IsUnique();
 
                     b.ToTable("IngredientType", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Whiskey"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Vodka"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Gin"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Rum"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Tequila"
+                        });
                 });
 
             modelBuilder.Entity("DrinkMix.Models.Recipe", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
                     b.Property<int>("GlassTypeId")
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -109,10 +197,10 @@ namespace DrinkMix.Data.Migrations
             modelBuilder.Entity("DrinkMix.Models.RecipeIngredient", b =>
                 {
                     b.Property<int>("RecipeId")
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
                     b.Property<int>("IngredientId")
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
                     b.Property<double>("Quantity")
                         .HasColumnType("double")

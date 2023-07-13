@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DrinkMix.Models;
+namespace DrinkMix.DataAccess.Models;
 
 public partial class RecipeIngredient
 {
@@ -11,10 +11,7 @@ public partial class RecipeIngredient
 
     public string UnitOfMeasurement { get; set; } = null!;
 
-    /// <summary>
-    /// The amount of said ingredient to use in recipe
-    /// </summary>
-    public double Quantity { get; set; }
+    public decimal Quantity { get; set; }
 
     public virtual Ingredient Ingredient { get; set; } = null!;
 

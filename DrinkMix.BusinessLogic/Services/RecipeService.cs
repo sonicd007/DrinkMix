@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
 using DrinkMix.BusinessLogic.DTOs;
 using DrinkMix.BusinessLogic.Services.Interfaces;
-using DrinkMix.Data;
-using DrinkMix.Models;
+using DrinkMix.DataAccess.Models;
+using DrinkMix.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using DrinkMix.DataAccess.Data;
 
 namespace DrinkMix.Services
 {
@@ -38,7 +39,7 @@ namespace DrinkMix.Services
         public RecipeDTO CreateRecipe(RecipeDTO recipe)
         {
             Recipe newRecipe = _mapper.Map<Recipe>(recipe);
-            newRecipe.GlassType = null;
+
             var ingredientsIds = newRecipe.RecipeIngredients.Select(x => x.IngredientId).ToList();
             var ingredients = _dbContext.Ingredients.Where(x => ingredientsIds.Contains(x.Id)).ToList();
             newRecipe.RecipeIngredients = new List<RecipeIngredient>();

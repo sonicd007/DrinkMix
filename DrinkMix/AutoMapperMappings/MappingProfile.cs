@@ -24,7 +24,8 @@ namespace DrinkMix.AutoMapperMappings
                 .ForMember(x => x.GlassTypeId, opt => opt.MapFrom(y => y.GlassTypeId))
                 .ForMember(x => x.Description, opt => opt.MapFrom(y => y.Description))
                 .ForMember(x => x.GlassType, opt => opt.MapFrom(y => y.GlassName))
-                .ForMember(x => x.RecipeIngredients, opt => opt.MapFrom(y => y.Ingredients));
+                .ForMember(x => x.RecipeIngredients, opt => opt.MapFrom(y => y.Ingredients))
+                .ForMember(x => x.ImageUrl, opt => opt.MapFrom(y => y.ImageUrl));
                 
             CreateMap<GlassTypeDTO, GlassTypeViewModel>()
                 .ForMember(to => to.Id, opt => opt.MapFrom(from => from.Id))
@@ -62,7 +63,8 @@ namespace DrinkMix.AutoMapperMappings
                 .ForMember(to => to.Description, opt => opt.MapFrom(from => from.Description))
                 .ForMember(to => to.Name, opt => opt.MapFrom(from => from.Name))
                 .ForMember(to => to.GlassTypeId, opt => opt.MapFrom(from => from.GlassTypeId))
-                .ForMember(to => to.Ingredients, opt => opt.MapFrom(from => from.RecipeIngredients));
+                .ForMember(to => to.Ingredients, opt => opt.MapFrom(from => from.RecipeIngredients))
+                .ForMember(to => to.ImageUrl, opt => opt.MapFrom(from => from.ImageUrl));
         }
     }
 

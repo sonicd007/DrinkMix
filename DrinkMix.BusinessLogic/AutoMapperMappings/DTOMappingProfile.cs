@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using DrinkMix.BusinessLogic.DTOs;
-using DrinkMix.Models;
+using DrinkMix.DataAccess.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,11 +26,13 @@ namespace DrinkMix.BusinessLogic.AutoMapperMappings
             CreateMap<Recipe, RecipeDTO>()
                 .ForMember(to => to.GlassName, opt => opt.MapFrom(from => from.GlassType.Name))
                 .ForMember(to => to.GlassTypeId, opt => opt.MapFrom(from => from.GlassType.Id))
-                .ForMember(to => to.Ingredients, opt => opt.MapFrom(to => to.RecipeIngredients));
+                .ForMember(to => to.Ingredients, opt => opt.MapFrom(to => to.RecipeIngredients))
+                .ForMember(to => to.ImageUrl, opt => opt.MapFrom(to => to.ImageUrl));
             CreateMap<RecipeDTO, Recipe>()
                 .ForMember(to => to.GlassTypeId, opt => opt.MapFrom(from => from.GlassTypeId))
                 .ForMember(to => to.GlassType, opt => opt.Ignore())
-                .ForMember(to => to.RecipeIngredients, opt => opt.MapFrom(to => to.Ingredients));
+                .ForMember(to => to.RecipeIngredients, opt => opt.MapFrom(to => to.Ingredients))
+                .ForMember(to => to.ImageUrl, opt => opt.MapFrom(to => to.ImageUrl));
             //.ReverseMap();
 
             CreateMap<GlassTypeDTO, GlassType>()
