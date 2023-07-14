@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
 import { Search as MagnifyingGlass } from 'react-bootstrap-icons';
-import SummaryContainer from './SummaryContainer';
+import SummaryContainer from '../summary-container/SummaryContainer';
 export class Search extends Component {
     static displayName = Search.name;
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
-import SummaryContainer from './SummaryContainer';
+import SummaryContainer from '../summary-container/SummaryContainer';
 export class WhatCanIMake extends Component {
     static displayName = WhatCanIMake.name;
 

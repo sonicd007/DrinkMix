@@ -1,6 +1,6 @@
 ﻿import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import drinkMixService from './api-drinkmix/DrinkMixService';
+import drinkMixService from '../api-drinkmix/DrinkMixService';
 
 const IngredientForm = ({ ingredientId }) => {
     const [name, setName] = useState('');

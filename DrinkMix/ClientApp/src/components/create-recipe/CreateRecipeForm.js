@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import drinkMixService from './api-drinkmix/DrinkMixService';
+import drinkMixService from '../api-drinkmix/DrinkMixService';
 
 const CreateRecipeForm = () => {
     const [recipeData, setRecipeData] = useState({

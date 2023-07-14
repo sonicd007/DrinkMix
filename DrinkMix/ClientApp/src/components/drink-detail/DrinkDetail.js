@@ -3,7 +3,7 @@ import { Row, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhiskeyGlass, faMortarPestle } from '@fortawesome/free-solid-svg-icons';
 import PH337x584 from '../resources/images/placeholders/337x584.svg';
-import SummaryContainer from './SummaryContainer';
+import SummaryContainer from '../summary-container/SummaryContainer';
 export class DrinkDetail extends Component {
     static displayName = DrinkDetail.name;
 

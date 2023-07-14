@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import { Row, Col } from 'reactstrap';
-import Rating from './Rating';
+import Rating from '../rating/Rating';
+// TODO: Styles should be coming from this module not drinkcard
 import styles from './DrinkCard.module.css';
 
 const DrinkCard = ({ name, description, ingredients, rating, imageUrl, altText }) => {

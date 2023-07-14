@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
-import SummaryContainer from './SummaryContainer';
-import CreateRecipeForm from './CreateRecipeForm';
+import SummaryContainer from '../summary-container/SummaryContainer';
+import CreateRecipeForm from '../create-recipe/CreateRecipeForm';
 
 export class CreateRecipe extends Component {
     static displayName = CreateRecipe.name;

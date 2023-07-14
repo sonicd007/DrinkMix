@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
-import HappyAlcoholicsImage from '../resources/images/happy-alcoholics-placeholder.jpg';
-import PH300x300 from '../resources/images/placeholders/300x300.svg';
+import HappyAlcoholicsImage from '../../resources/images/happy-alcoholics-placeholder.jpg';
+import PH300x300 from '../../resources/images/placeholders/300x300.svg';
 import { Star, StarFill, StarHalf } from 'react-bootstrap-icons';
-import SummaryContainer from './SummaryContainer';
-import Rating from './Rating';
-import DrinkCard from './DrinkCard';
+import SummaryContainer from '../summary-container/SummaryContainer';
+import Rating from '../rating/Rating';
+import DrinkCard from '../drink-card/DrinkCard';
 export class Catalog extends Component {
     static displayName = Catalog.name;
 

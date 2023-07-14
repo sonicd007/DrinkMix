@@ -1,10 +1,10 @@
 import ApiAuthorzationRoutes from './components/api-authorization/ApiAuthorizationRoutes';
 import { Counter } from "./components/Counter";
 import { FetchData } from "./components/FetchData";
-import { Catalog } from "./components/Catalog";
-import { WhatCanIMake } from './components/WhatCanIMake';
-import { Search } from './components/Search';
-import CreateRecipe from './components/CreateRecipe';
+import { Catalog } from "./components/catalog/Catalog";
+import { WhatCanIMake } from './components//what-can-i-make/WhatCanIMake';
+import { Search } from './components/search/Search';
+import CreateRecipe from './components/create-recipe/CreateRecipe';
 
 const AppRoutes = [
     {
