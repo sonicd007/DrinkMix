@@ -4,8 +4,7 @@ import { FetchData } from "./components/FetchData";
 import { Catalog } from "./components/Catalog";
 import { WhatCanIMake } from './components/WhatCanIMake';
 import { Search } from './components/Search';
-import { DrinkDetail } from './components/DrinkDetail';
-import CreateRecipeForm from './components/CreateRecipeForm';
+import CreateRecipe from './components/CreateRecipe';
 
 const AppRoutes = [
     {
@@ -22,7 +21,7 @@ const AppRoutes = [
     },
     {
         path: '/wip',
-        element: <CreateRecipeForm />
+        element: <CreateRecipe />
     },
     {
         path: '/counter',
