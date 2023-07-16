@@ -2,21 +2,21 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #0366d6;
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 code {
-  color: #E01A76;
+    color: #E01A76;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 body {
@@ -26,6 +26,48 @@ body {
 h2 {
     font: normal normal bold 50px/63px Quicksand;
 }
+
 h3 {
     font: normal normal bold 20px/25px Quicksand;
 }
+
+.form-container {
+    box-shadow: 0px 0px 10px #00000029;
+    border-radius: 15px;
+    margin: 20px auto 20px auto;
+    padding: 20px;
+}
+
+    .form-container h5 {
+        color: #018ABE;
+    }
+
+    .form-container form {
+        margin-top: 10px;
+    }
+
+    .form-container label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-container input {
+        width: 100%;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .form-container button {
+        margin-top: 10px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: #018ABE;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+        .form-container button:hover {
+            background-color: #015d80;
+        }

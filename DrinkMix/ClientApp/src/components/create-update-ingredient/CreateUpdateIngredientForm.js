@@ -1,11 +1,11 @@
 ﻿import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import drinkMixService from '../api-drinkmix/DrinkMixService';
 
 const IngredientForm = ({ ingredientId }) => {
     const [name, setName] = useState('');
     const [ingredientType, setIngredientType] = useState('');
-    const history = useHistory();
+    const history = useNavigate();
 
     useEffect(() => {
         if (ingredientId) {
@@ -44,7 +44,7 @@ const IngredientForm = ({ ingredientId }) => {
             drinkMixService.createIngredient(ingredientData)
                 .then(() => {
                     console.log('Ingredient created successfully');
-                    history.push('/ingredients');
+                    //history.push('/ingredients');
                 })
                 .catch((error) => {
                     console.error(error);
@@ -53,17 +53,20 @@ const IngredientForm = ({ ingredientId }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="name">Name:</label>
-                <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
-            </div>
-            <div>
-                <label htmlFor="ingredientType">Ingredient Type:</label>
-                <input type="text" id="ingredientType" value={ingredientType} onChange={(e) => setIngredientType(e.target.value)} required />
-            </div>
-            <button type="submit">Save</button>
-        </form>
+        <div className="form-container">
+        <h5>Create Ingredient Type</h5>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label htmlFor="name">Name:</label>
+                    <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
+                </div>
+                <div>
+                    <label htmlFor="ingredientType">Ingredient Type:</label>
+                    <input type="text" id="ingredientType" value={ingredientType} onChange={(e) => setIngredientType(e.target.value)} required />
+                </div>
+                <button type="submit">Save</button>
+            </form>
+        </div>
     );
 };
 
