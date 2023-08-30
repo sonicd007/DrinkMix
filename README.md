@@ -105,14 +105,8 @@ Backend: Open the solution in Visual Studio 2022+. Compile and run the DrinkMix 
 ### Prerequisites
 
 TODO: Update this
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  cd ClientApp
-  npm install
-  npm run start
-  ```
+<!--This is an example of how to list things you need to use the software and how to install them.-->
+
 
 ### Installation
 
@@ -121,10 +115,12 @@ This is an example of how to list things you need to use the software and how to
    git clone https://github.com/sonicd007/DrinkMix.git
    ```
 2. Install NPM packages
-   ```sh
-   cd ClientApp
-   npm install
-   ```
+  ```sh
+  npm install npm@latest -g
+  cd ClientApp
+  npm install
+  npm run start
+  ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -149,7 +145,6 @@ TODO: Update this
 - [In Progress] Create UI with minimal styling
 - [ ] Create db models
 - [ ] Create endpoints for UI to use
-    - [ ] Nested Feature
 
 See the [open issues](https://github.com/sonicd007/DrinkMix/issues) for a full list of proposed features (and known issues).
 
